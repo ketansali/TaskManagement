@@ -25,6 +25,7 @@ const countryReducer = createSlice({
         },
         [addCountry.fulfilled]:(state,action)=>{
             const {payload} = action
+            state.loading = false
             if(payload.isSuccess){
                 Toast({msg:payload.message,type:'success'})
             }else{
@@ -42,6 +43,7 @@ const countryReducer = createSlice({
         },
         [deleteCountry.fulfilled]:(state,action)=>{
             const {payload} = action
+            state.loading = false
             if(payload.isSuccess){
                 Toast({msg:payload.message,type:'success'})
             }else{
@@ -56,6 +58,7 @@ const countryReducer = createSlice({
         },
         [updateCountry.fulfilled]:(state,action)=>{
             const {payload} = action
+            state.loading = false
             if(payload.isSuccess){
                 Toast({msg:payload.message,type:'success'})
             }else{

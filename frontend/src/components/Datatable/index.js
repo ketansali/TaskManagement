@@ -8,6 +8,7 @@ export default function DataTable({
   fetchData,
   loading,
   pages,
+  dispatch
 }) {
   const {
     getTableProps,
@@ -36,8 +37,9 @@ export default function DataTable({
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+  
     fetchData && fetchData({ search: "", page: pageIndex, limit: pageSize });
-  }, [fetchData,pageIndex,pageSize]);
+  }, [fetchData,pageIndex,pageSize,dispatch]);
   function handlePageClick({ selected: selectedPage }) {
     fetchData({ search: "", page: selectedPage + 1, limit: pageSize });
   }
@@ -79,7 +81,23 @@ export default function DataTable({
       </div>
       </div>
       <div>
-        <table
+        {
+          loading ?(
+           <div className="d-flex justify-content-center align-items-center">
+           <MutatingDots
+            height="100"
+            width="100"
+            color="#ff9b44"
+            secondaryColor="#ff9b44"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+           </div>
+          ):(
+            <table
           {...getTableProps({
             className: "table table-striped custom-table mb-0 ",
           })}
@@ -126,6 +144,8 @@ export default function DataTable({
             })}
           </tbody>
         </table>
+          )
+        }
 
         <div style={{ float: "right", marginTop: "20px" }}>
           <ReactPaginate

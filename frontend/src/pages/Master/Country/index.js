@@ -9,6 +9,7 @@ import {
 import DataTable from "../../../components/Datatable";
 import Delete from "../../../components/Delete";
 import Modal from "../../../components/Modal";
+import { MutatingDots } from "react-loader-spinner";
 const Country = () => {
   const dispatch = useDispatch();
   const countryData = useRef();
@@ -21,7 +22,7 @@ const Country = () => {
   const [DeleteModalShow, setDeleteModalShow] = useState(false);
 
   const showModal = () => {
-    setClsRed("")
+    setClsRed("");
     setCountryName("");
     setShow(true);
   };
@@ -38,7 +39,7 @@ const Country = () => {
       setShow(true);
       return false;
     }
-    
+
     if (rowDataId) {
       dispatch(updateCountry({ id: rowDataId, countryName })).then(() => {
         setCountryName("");
@@ -53,16 +54,16 @@ const Country = () => {
 
     setShow(false);
   };
-  const showDeleteModal = (rowId)=>{
-    setRowDataId(rowId)
-      setDeleteModalShow(true)
-  }
-  const handleDelete = () => {  
-   const id = countryData.current.data[rowDataId]._id;
+  const showDeleteModal = (rowId) => {
+    setRowDataId(rowId);
+    setDeleteModalShow(true);
+  };
+  const handleDelete = () => {
+    const id = countryData.current.data[rowDataId]._id;
     dispatch(deleteCountry(id)).then(() => {
       dispatch(getAllCountry({ search: "", page: 1, limit: 5 }));
       setDeleteModalShow(false);
-      setRowDataId("")
+      setRowDataId("");
     });
   };
   const handleUpdateModal = (rowId) => {
@@ -93,7 +94,6 @@ const Country = () => {
         Header: "Action",
         className: "text-right",
         Cell: (props) => (
-          
           <div className="dropdown dropdown-action text-right">
             <a
               href="!#"
@@ -118,7 +118,7 @@ const Country = () => {
                 href="!#"
                 data-toggle="modal"
                 data-target="#deleteModal"
-                onClick={()=>showDeleteModal(props.row.id)}
+                onClick={() => showDeleteModal(props.row.id)}
               >
                 <i className="fa fa-trash-o m-r-5"></i> Delete
               </a>
@@ -161,13 +161,37 @@ const Country = () => {
         </div>
         {/* /Page Header */}
 
-        <DataTable
-          columns={columns}
-          data={data ? data?.data : []}
-          fetchData={fetchData}
-          loading={loading}
-          pages={data?.pages}
-        />
+        {/* {loading ? (
+          <MutatingDots
+            height="100"
+            width="100"
+            color="#4fa94d"
+            secondaryColor="#4fa94d"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        ) : (
+          <DataTable
+            columns={columns}
+            data={data ? data?.data : []}
+            fetchData={fetchData}
+            loading={loading}
+            pages={data?.pages}
+          />
+        )} */}
+        
+          <DataTable
+            columns={columns}
+            data={data ? data?.data : []}
+            fetchData={fetchData}
+            loading={loading}
+            pages={data?.pages}
+            dispatch={dispatch}
+          />
+        
         <Modal
           id="modal"
           title={rowDataId ? "Update Country" : "Add Country"}
@@ -185,7 +209,9 @@ const Country = () => {
                   type="text"
                   value={countryName}
                   onChange={(e) => setCountryName(e.target.value)}
-                  onKeyUp={(e)=>setClsRed(e.target.value !=null?"":"is-invalid")}
+                  onKeyUp={(e) =>
+                    setClsRed(e.target.value != null ? "" : "is-invalid")
+                  }
                 />
               </div>
               <div className="submit-section">
@@ -196,12 +222,15 @@ const Country = () => {
             </form>
           </div>
         </Modal>
-        {
-          rowDataId && <Delete id="deleteModal"  setDeleteModalShow={DeleteModalShow} hideModal={hideModal} handleDelete={handleDelete}/>
-        }
-        
+        {rowDataId && (
+          <Delete
+            id="deleteModal"
+            setDeleteModalShow={DeleteModalShow}
+            hideModal={hideModal}
+            handleDelete={handleDelete}
+          />
+        )}
       </div>
-      
     </div>
   );
 };
