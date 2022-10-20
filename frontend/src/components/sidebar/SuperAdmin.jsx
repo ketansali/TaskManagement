@@ -10,7 +10,7 @@ const SuperAdmin = () => {
               <span>Main</span>
             </li> */}
             <li className="submenu">
-              <a href="#"><i className="la la-dashboard" /> <span> Dashboard</span> </a>
+              <a href="!#"><i className="la la-dashboard" /> <span> Dashboard</span> </a>
               {/* <ul style={{display: 'none'}}>
                 <li><a className="active" href="index.html">Admin Dashboard</a></li>
                 <li><a href="employee-dashboard.html">Employee Dashboard</a></li>

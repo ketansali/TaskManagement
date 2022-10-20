@@ -10,7 +10,7 @@ const Header = () => {
         </a>
       </div>
       {/* /Logo */}
-      <a id="toggle_btn" href="#">
+      <a id="toggle_btn" href="!#">
         <span className="bar-icon">
           <span />
           <span />
@@ -28,7 +28,7 @@ const Header = () => {
         {/* Search */}
         <li className="nav-item">
           <div className="top-nav-search">
-            <a href="#" className="responsive-search">
+            <a href="!#" className="responsive-search">
               <i className="fa fa-search" />
             </a>
             <form action="search.html">
@@ -40,20 +40,20 @@ const Header = () => {
         {/* /Search */}
         {/* Flag */}
         <li className="nav-item dropdown has-arrow flag-nav">
-          <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+          <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="!#" role="button">
             <img src="assets/img/flags/us.png" alt="" height={20} /> <span>English</span>
           </a>
           <div className="dropdown-menu dropdown-menu-right">
-            <a href="#" className="dropdown-item">
+            <a href="!#" className="dropdown-item">
               <img src="assets/img/flags/us.png" alt="" height={16} /> English
             </a>
-            <a href="#" className="dropdown-item">
+            <a href="!#" className="dropdown-item">
               <img src="assets/img/flags/fr.png" alt="" height={16} /> French
             </a>
-            <a href="#" className="dropdown-item">
+            <a href="!#" className="dropdown-item">
               <img src="assets/img/flags/es.png" alt="" height={16} /> Spanish
             </a>
-            <a href="#" className="dropdown-item">
+            <a href="!#" className="dropdown-item">
               <img src="assets/img/flags/de.png" alt="" height={16} /> German
             </a>
           </div>
@@ -61,18 +61,18 @@ const Header = () => {
         {/* /Flag */}
         {/* Notifications */}
         <li className="nav-item dropdown">
-          <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
+          <a href="!#" className="dropdown-toggle nav-link" data-toggle="dropdown">
             <i className="fa fa-bell-o" /> <span className="badge badge-pill">3</span>
           </a>
           <div className="dropdown-menu notifications">
             <div className="topnav-dropdown-header">
               <span className="notification-title">Notifications</span>
-              <a href="#" className="clear-noti"> Clear All </a>
+              <a href="!#" className="clear-noti"> Clear All </a>
             </div>
             <div className="noti-content">
               <ul className="notification-list">
                 <li className="notification-message">
-                  <a href="activities.html">
+                  <a href="!#">
                     <div className="media">
                       <span className="avatar">
                         <img alt="" src="assets/img/profiles/avatar-02.jpg" />
@@ -85,7 +85,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="activities.html">
+                  <a href="!#">
                     <div className="media">
                       <span className="avatar">
                         <img alt="" src="assets/img/profiles/avatar-03.jpg" />
@@ -98,7 +98,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="activities.html">
+                  <a href="!#">
                     <div className="media">
                       <span className="avatar">
                         <img alt="" src="assets/img/profiles/avatar-06.jpg" />
@@ -111,7 +111,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="activities.html">
+                  <a href="!#">
                     <div className="media">
                       <span className="avatar">
                         <img alt="" src="assets/img/profiles/avatar-17.jpg" />
@@ -124,7 +124,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="activities.html">
+                  <a href="!#">
                     <div className="media">
                       <span className="avatar">
                         <img alt="" src="assets/img/profiles/avatar-13.jpg" />
@@ -139,25 +139,25 @@ const Header = () => {
               </ul>
             </div>
             <div className="topnav-dropdown-footer">
-              <a href="activities.html">View all Notifications</a>
+              <a href="!#">View all Notifications</a>
             </div>
           </div>
         </li>
         {/* /Notifications */}
         {/* Message Notifications */}
         <li className="nav-item dropdown">
-          <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
+          <a href="!#" className="dropdown-toggle nav-link" data-toggle="dropdown">
             <i className="fa fa-comment-o" /> <span className="badge badge-pill">8</span>
           </a>
           <div className="dropdown-menu notifications">
             <div className="topnav-dropdown-header">
               <span className="notification-title">Messages</span>
-              <a href="#" className="clear-noti"> Clear All </a>
+              <a href="!#" className="clear-noti"> Clear All </a>
             </div>
             <div className="noti-content">
               <ul className="notification-list">
                 <li className="notification-message">
-                  <a href="chat.html">
+                  <a href="!#">
                     <div className="list-item">
                       <div className="list-left">
                         <span className="avatar">
@@ -174,7 +174,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="chat.html">
+                  <a href="!#">
                     <div className="list-item">
                       <div className="list-left">
                         <span className="avatar">
@@ -191,7 +191,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="chat.html">
+                  <a href="!#">
                     <div className="list-item">
                       <div className="list-left">
                         <span className="avatar">
@@ -208,7 +208,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="chat.html">
+                  <a href="!#">
                     <div className="list-item">
                       <div className="list-left">
                         <span className="avatar">
@@ -225,7 +225,7 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="notification-message">
-                  <a href="chat.html">
+                  <a href="!#">
                     <div className="list-item">
                       <div className="list-left">
                         <span className="avatar">
@@ -244,32 +244,32 @@ const Header = () => {
               </ul>
             </div>
             <div className="topnav-dropdown-footer">
-              <a href="chat.html">View all Messages</a>
+              <a href="!#">View all Messages</a>
             </div>
           </div>
         </li>
         {/* /Message Notifications */}
         <li className="nav-item dropdown has-arrow main-drop">
-          <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
+          <a href="!#" className="dropdown-toggle nav-link" data-toggle="dropdown">
             <span className="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="" />
               <span className="status online" /></span>
             <span>Admin</span>
           </a>
           <div className="dropdown-menu">
-            <a className="dropdown-item" href="profile.html">My Profile</a>
-            <a className="dropdown-item" href="settings.html">Settings</a>
-            <a className="dropdown-item" href="login.html">Logout</a>
+            <a className="dropdown-item" href="!#">My Profile</a>
+            <a className="dropdown-item" href="!#">Settings</a>
+            <a className="dropdown-item" href="!#">Logout</a>
           </div>
         </li>
       </ul>
       {/* /Header Menu */}
       {/* Mobile Menu */}
       <div className="dropdown mobile-user-menu">
-        <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i className="fa fa-ellipsis-v" /></a>
+        <a href="!#" className="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i className="fa fa-ellipsis-v" /></a>
         <div className="dropdown-menu dropdown-menu-right">
-          <a className="dropdown-item" href="profile.html">My Profile</a>
-          <a className="dropdown-item" href="settings.html">Settings</a>
-          <a className="dropdown-item" href="login.html">Logout</a>
+          <a className="dropdown-item" href="!#">My Profile</a>
+          <a className="dropdown-item" href="!#">Settings</a>
+          <a className="dropdown-item" href="!#">Logout</a>
         </div>
       </div>
       {/* /Mobile Menu */}

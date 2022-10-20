@@ -39,6 +39,7 @@ exports.country = {
   },
   updateCountry: async (req, res) => {
     try {
+      
       const countryInfo = await COUNTRY_MASTER.findById(req.body.id);
       if (!countryInfo) {
         return badRequestResponse(res, {
@@ -60,7 +61,7 @@ exports.country = {
             countryName: req.body.countryName,
             //updatedBy :req.user._id
           },
-        }
+        },{new:true}
       );
       return successResponse(res, {
         message: "Country updated successfully",
@@ -91,8 +92,20 @@ exports.country = {
   },
   getCountries: async (req, res) => {
     try {
-      const coutries = await COUNTRY_MASTER.find({});
+      const keyword = req.query.search;
+      const search = keyword && keyword !== 'undefined'
+        ? { $or: [{ countryName: { $regex: keyword, $options: "i" } }] }
+        : {};
+      const page = req.query.page || 1;
+      const pagesize = req.query.limit || 10;
+      const skip = (page - 1) * pagesize;
+      const total = await COUNTRY_MASTER.countDocuments();
+      const pages = Math.ceil(total / pagesize);
+      const coutries = await COUNTRY_MASTER.find(search).sort({createdAt:-1}).skip(skip).limit(pagesize);
       return successResponse(res, {
+        count: coutries.length,
+        pages,
+        total,
         data: coutries,
       });
     } catch (error) {

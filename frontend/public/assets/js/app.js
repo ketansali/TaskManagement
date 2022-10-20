@@ -79,6 +79,7 @@ $(document).ready(function() {
 	// Modal Popup hide show
 
 	if($('.modal').length > 0 ){
+		
 		var modalUniqueClass = ".modal";
 		$('.modal').on('show.bs.modal', function(e) {
 		  var $element = $(this);
