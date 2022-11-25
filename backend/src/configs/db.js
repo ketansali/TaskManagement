@@ -3,6 +3,7 @@ let mongoose = require('mongoose')
 require('../models/Country.model')
 require('../models/State.model')
 require('../models/City.model')
+require('../models/User.model')
 
 
 // console.log('dburl', process.env.databaseUri)

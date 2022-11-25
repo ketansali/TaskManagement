@@ -14,7 +14,8 @@ const Delete = ({ id, setDeleteModalShow, handleDelete }) => {
         <div className="modal-content">
           <div className="modal-body">
             <div className="form-header">
-              <h3>Delete </h3>
+              {/* <h3>Delete </h3> */}
+              <i class="fa fa-info-circle"  style={{fontSize:"40px",color:'red'}}></i>
               <p>Are you sure want to delete?</p>
             </div>
             <div className="modal-btn delete-action">
@@ -23,7 +24,7 @@ const Delete = ({ id, setDeleteModalShow, handleDelete }) => {
                   <a
                     href="!#"
                     className="btn btn-primary continue-btn"
-                    onClick={handleDelete}
+                    onClick={(e)=>handleDelete(e)}
                   >
                     Delete
                   </a>

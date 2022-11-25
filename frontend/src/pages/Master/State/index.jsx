@@ -1,56 +1,66 @@
 import React, { useState, useCallback, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addCountry,
-  deleteCountry,
+  addState,
+  deleteState,
+  getAllState,
+  updateState,
   getAllCountry,
-  updateCountry,
-} from "../../../actions/Country.action";
+} from "../../../actions";
 import DataTable from "../../../components/Datatable";
 import Delete from "../../../components/Delete";
 import Modal from "../../../components/Modal";
-const Country = () => {
+import Select from "react-select";
+const State = () => {
   const dispatch = useDispatch();
-  const countryData = useRef();
-  const { loading, data } = useSelector((state) => state.Country);
-  countryData.current = data;
-  const [countryName, setCountryName] = useState("");
+  const stateData = useRef();
+  const { loading, data } = useSelector((state) => state.State);
+  const CountryData = useSelector((state) => state.Country);
+
+  stateData.current = data;
+  const [stateName, setStateName] = useState("");
+  const [countryId, setCountryId] = useState("");
   const [rowDataId, setRowDataId] = useState("");
   const [clsRed, setClsRed] = useState("");
   const [show, setShow] = useState(false);
   const [DeleteModalShow, setDeleteModalShow] = useState(false);
+  const [ddlStyle, setDdlStyle] = useState("");
 
   const showModal = () => {
+    setCountryId("");
     setClsRed("");
-    setCountryName("");
+    setStateName("");
     setShow(true);
   };
 
   const hideModal = () => {
-    setCountryName("");
+    setDdlStyle("")
+    setStateName("");
     setRowDataId("");
+    setCountryId("");
     setShow(false);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (countryName === "") {
+    console.log({ stateName, countryId });
+    if (stateName === "" || countryId === "") {
       setClsRed("is-invalid");
+      setDdlStyle(customStyles);
       setShow(true);
       return false;
     }
 
     if (rowDataId) {
-      dispatch(updateCountry({ id: rowDataId, countryName })).then(() => {
-        setCountryName("");
+      dispatch(updateState({ id: rowDataId, stateName })).then(() => {
+        setCountryId("");
         setRowDataId("");
-        dispatch(getAllCountry({ search: "", page: 1, limit: 5 }));
+        dispatch(getAllState({ search: "", page: 1, limit: 5 }));
       });
     } else {
-      dispatch(addCountry({ countryName })).then(() => {
-        dispatch(getAllCountry({ search: "", page: 1, limit: 5 }));
+      dispatch(addState({ stateName, countryId: countryId.value })).then(() => {
+        dispatch(getAllState({ search: "", page: 1, limit: 5 }));
       });
     }
-
     setShow(false);
   };
   const showDeleteModal = (rowId) => {
@@ -58,28 +68,35 @@ const Country = () => {
     setDeleteModalShow(true);
   };
   const handleDelete = (e) => {
-    e.preventDefault()
-    const id = countryData.current.data[rowDataId]._id;
-    dispatch(deleteCountry(id)).then(() => {
-      dispatch(getAllCountry({ search: "", page: 1, limit: 5 }));
+    e.preventDefault();
+    const id = stateData.current.data[rowDataId]._id;
+    dispatch(deleteState(id)).then(() => {
+      dispatch(getAllState({ search: "", page: 1, limit: 5 }));
       setDeleteModalShow(false);
       setRowDataId("");
     });
   };
   const handleUpdateModal = (rowId) => {
-    const data = countryData.current.data[rowId];
-    setCountryName(data.countryName);
+    const data = stateData.current.data[rowId];
+
+    setStateName(data.stateName);
     setRowDataId(data._id);
+    setCountryId({ label: data.Country.countryName, value: data.Country._id });
     setShow(true);
   };
   const fetchAPIData = ({ search, page, limit }) => {
-    dispatch(getAllCountry({ search, page, limit }));
+    dispatch(getAllCountry({ search: "", page: "", limit: "" }));
+    dispatch(getAllState({ search, page, limit }));
   };
 
   const fetchData = useCallback(({ search, page, limit }) => {
     fetchAPIData({ search, page, limit });
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
   }, []);
+  const handleOnChange = (selected) => {
+    setDdlStyle("")
+    setCountryId(selected);
+  };
   const columns = useMemo(
     () => [
       {
@@ -88,8 +105,12 @@ const Country = () => {
         accessor: (_row, i) => i + 1,
       },
       {
-        Header: "Name",
-        accessor: "countryName",
+        Header: "Country",
+        accessor: "Country.countryName",
+      },
+      {
+        Header: "State",
+        accessor: "stateName",
       },
       {
         Header: "Action",
@@ -131,6 +152,28 @@ const Country = () => {
     []
   );
 
+  const customStyles = {
+    control: (base, state) => ({
+      ...base,
+      // state.isFocused can display different borderColor if you need it
+      borderColor: state.isFocused
+        ? "#ddd"
+        : false
+        ? "#ddd"
+        : "#dc3545",
+      //overwrittes hover style
+      "&:hover": {
+        borderColor: state.isFocused
+          ? "#ddd"
+          : countryId
+          ? true
+          : false
+          ? "#ddd"
+          : "#dc3545",
+      },
+    }),
+  };
+
   return (
     <div className="page-wrapper">
       {/* Page Content */}
@@ -139,12 +182,12 @@ const Country = () => {
         <div className="page-header">
           <div className="row align-items-center">
             <div className="col">
-              <h3 className="page-title">Country</h3>
+              <h3 className="page-title">State</h3>
               <ul className="breadcrumb">
                 <li className="breadcrumb-item">
                   <a href="index.html">Master</a>
                 </li>
-                <li className="breadcrumb-item active">Country</li>
+                <li className="breadcrumb-item active">State</li>
               </ul>
             </div>
             <div className="col-auto float-right ml-auto">
@@ -155,24 +198,24 @@ const Country = () => {
                 data-target="#modal"
                 onClick={showModal}
               >
-                <i className="fa fa-plus" /> Add Country
+                <i className="fa fa-plus" /> Add State
               </a>
             </div>
           </div>
         </div>
         {/* /Page Header */}
-          <DataTable
-            columns={columns}
-            data={data ? data?.data : []}
-            fetchData={fetchData}
-            loading={loading}
-            pages={data?.pages}
-            dispatch={dispatch}
-          />
-        
+        <DataTable
+          columns={columns}
+          data={data ? data?.data : []}
+          fetchData={fetchData}
+          loading={loading}
+          pages={data?.pages}
+          dispatch={dispatch}
+        />
+
         <Modal
           id="modal"
-          title={rowDataId ? "Update Country" : "Add Country"}
+          title={rowDataId ? "Update State" : "Add State"}
           show={show}
           hideModal={hideModal}
         >
@@ -180,16 +223,45 @@ const Country = () => {
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>
-                  Country Name <span className="text-danger">*</span>
+                  Country <span className="text-danger">*</span>
+                </label>
+                <Select
+                  options={CountryData?.data?.data.map((e) => {
+                    return {
+                      label: e.countryName,
+                      value: e._id,
+                    };
+                  })}
+                  onChange={handleOnChange}
+                  value={countryId}
+                  isSearchable={true}
+                  styles={countryId?"":ddlStyle}
+                  theme={(theme) => ({
+                    ...theme,
+                   // color: "green",
+                    colors: {
+                      ...theme.colors,
+                      primary: "#ff9b44",
+                      primary25: "#ccc9",
+                      //primary50: "#ff9b44",
+                    },
+                  })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>
+                  State <span className="text-danger">*</span>
                 </label>
                 <input
-                  className={`form-control ${clsRed}`}
+                  className={`form-control ${stateName?"":clsRed}`}
                   type="text"
-                  value={countryName}
-                  onChange={(e) => setCountryName(e.target.value)}
+                  value={stateName}
+                  onChange={(e) => setStateName(e.target.value)}
                   onKeyUp={(e) =>
                     setClsRed(e.target.value != null ? "" : "is-invalid")
                   }
+                  placeholder="Enter State Name"
                 />
               </div>
               <div className="submit-section">
@@ -205,7 +277,7 @@ const Country = () => {
             id="deleteModal"
             setDeleteModalShow={DeleteModalShow}
             hideModal={hideModal}
-            handleDelete={handleDelete}
+            handleDelete={(e) => handleDelete(e)}
           />
         )}
       </div>
@@ -213,4 +285,4 @@ const Country = () => {
   );
 };
 
-export default Country;
+export default State;

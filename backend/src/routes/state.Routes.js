@@ -17,6 +17,9 @@ router.delete('/delete',(req,res)=>{
 router.get('/get-state-by-id',(req,res)=>{
     return stateController.state.getStateById(req,res)
 })
+router.get('/get-state-by-CountryId',(req,res)=>{
+    return stateController.state.getStateByCountryId(req,res)
+})
 
 
 

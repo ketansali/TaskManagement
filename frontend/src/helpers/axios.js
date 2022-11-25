@@ -6,9 +6,10 @@ import {api } from '../configs/urlConfig';
 
 const axiosIntance = axios.create({
     baseURL: api,
-    // headers: {
-    //     'Authorization': token ? `Bearer ${token}` : ''
-    // }
+    headers: {
+        //'Authorization': token ? `Bearer ${token}` : ''
+        'Content-Type': 'multipart/form-data'
+    }
 });
 
 //axiosIntance.interceptors.request.use((req) => {

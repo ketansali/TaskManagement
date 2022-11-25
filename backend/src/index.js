@@ -10,9 +10,9 @@ const routes = require("./routes/index");
 const errorHandler = require("./middlewares/error-handler");
 const notFound = require("./middlewares/404");
 const PORT = process.env.PORT;
+const path = require('path')
 
-//static path
-app.use("/uploads", express.static("uploads"));
+
 
 // format
 app.use(
@@ -32,6 +32,9 @@ app.use(cors(corsOptionsDelegate));
 
 // fileupload
 app.use(fileUpload());
+
+//static path
+app.use('/users',express.static(path.join(__dirname,'uploads','users')));
 
 // api routes
 app.use("/api", routes);

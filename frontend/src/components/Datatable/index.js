@@ -1,7 +1,7 @@
 import { useTable, usePagination, useExpanded, useSortBy } from "react-table";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { MutatingDots } from "react-loader-spinner";
+import Loader from "../Loader/Index";
 export default function DataTable({
   columns,
   data,
@@ -84,17 +84,7 @@ export default function DataTable({
         {
           loading ?(
            <div className="d-flex justify-content-center align-items-center">
-           <MutatingDots
-            height="100"
-            width="100"
-            color="#ff9b44"
-            secondaryColor="#ff9b44"
-            radius="12.5"
-            ariaLabel="mutating-dots-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
+          <Loader/>
            </div>
           ):(
             <table

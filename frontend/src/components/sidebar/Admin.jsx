@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-const SuperAdmin = () => {
+const Admin = () => {
   return (
     <div className="sidebar" id="sidebar">
       <div className="sidebar-inner slimscroll">
@@ -10,7 +10,7 @@ const SuperAdmin = () => {
               <span>Main</span>
             </li> */}
             <li className="submenu">
-              <Link to="/superadminDashboard"><i className="la la-dashboard" /> <span> Dashboard</span> </Link>
+              <a href="!#"><i className="la la-dashboard" /> <span> Dashboard</span> </a>
               {/* <ul style={{display: 'none'}}>
                 <li><a className="active" href="index.html">Admin Dashboard</a></li>
                 <li><a href="employee-dashboard.html">Employee Dashboard</a></li>
@@ -39,11 +39,11 @@ const SuperAdmin = () => {
               <span>Employees</span>
             </li> */}
             <li className="submenu">
-              <a href="#"  className="noti-dot"><i className="la la-user" /> <span> Master</span> <span className="menu-arrow" /></a>
+              <Link className="noti-dot"><i className="la la-user" /> <span> Master</span> <span className="menu-arrow" /></Link>
               <ul style={{display: 'none'}}>         
-                <li><Link to="/country">Country</Link></li>
+                {/* <li><Link to="/country">Country</Link></li>
                 <li><Link to="/state">State</Link></li>
-                <li><Link to="/city">city</Link></li>
+                <li><Link to="/city">city</Link></li> */}
                 
 
                 {/* <li><a href="holidays.html">Holidays</a></li>
@@ -268,4 +268,4 @@ const SuperAdmin = () => {
   )
 }
 
-export default SuperAdmin
+export default Admin

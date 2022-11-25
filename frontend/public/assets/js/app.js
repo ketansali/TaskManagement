@@ -15,10 +15,12 @@ $(document).ready(function() {
 	// Sidebar
 	
 	var Sidemenu = function() {
+		debugger
 		this.$menuItem = $('#sidebar-menu a');
 	};
 	
 	function init() {
+		debugger
 		var $this = Sidemenu;
 		$('#sidebar-menu a').on('click', function(e) {
 			if($(this).parent().hasClass('submenu')) {
@@ -339,7 +341,7 @@ $(document).ready(function() {
 
 // Loader
 
-$(window).on ('load', function (){
-	$('#loader').delay(100).fadeOut('slow');
-	$('#loader-wrapper').delay(500).fadeOut('slow');
-});
+// $(window).on ('load', function (){
+// 	$('#loader').delay(1000).fadeOut('slow');
+// 	$('#loader-wrapper').delay(500).fadeOut('slow');
+// });

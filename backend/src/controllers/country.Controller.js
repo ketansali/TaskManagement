@@ -96,8 +96,8 @@ exports.country = {
       const search = keyword && keyword !== 'undefined'
         ? { $or: [{ countryName: { $regex: keyword, $options: "i" } }] }
         : {};
-      const page = req.query.page || 1;
-      const pagesize = req.query.limit || 10;
+      const page = req.query.page ;
+      const pagesize = req.query.limit ;
       const skip = (page - 1) * pagesize;
       const total = await COUNTRY_MASTER.countDocuments();
       const pages = Math.ceil(total / pagesize);

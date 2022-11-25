@@ -7,7 +7,7 @@ const citySchema = new mongoose.Schema({
     },
     stateId :{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'country'
+        ref : 'stateMaster'
     },
     // createdBy : {
     //     type : mongoose.Schema.Types.ObjectId,

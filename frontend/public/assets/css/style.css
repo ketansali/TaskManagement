@@ -1661,6 +1661,7 @@ table.dataTable thead > tr > td.sorting {
     margin-bottom: 30px;
     text-align: center;
 }
+
 .account-box {
 	background-color: #fff;
     border: 1px solid #ededed;
@@ -1700,7 +1701,7 @@ table.dataTable thead > tr > td.sorting {
 }
 .account-box .form-control {
     background-color: #fbfbfb;
-    border: 1px solid #e3e3e3;
+    /* border: 1px solid #e3e3e3; */
     border-radius: 4px;
     height: 46px;
 }
@@ -1725,6 +1726,8 @@ table.dataTable thead > tr > td.sorting {
 .account-footer a:hover {
 	color: #ff9b44;
 }
+
+
 
 /*-----------------
 	12. Dashboard
@@ -2060,7 +2063,7 @@ table.dataTable thead > tr > td.sorting {
 	17. Delete Modal
 -----------------------*/
 
-.form-header {
+/* .form-header {
     text-align: center;
 	margin-bottom: 30px;
 }
@@ -2118,8 +2121,67 @@ table.dataTable thead > tr > td.sorting {
 	background-color: #ff9b44;
 	border: 1px solid #ff9b44;
 	color: #fff;
-}
+} */
 
+.form-header {
+    text-align: center;
+	margin-bottom: 30px;
+}
+.form-header h3 {
+    color: #333;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.form-header p {
+    color: #929292;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.modal-btn > .row {
+	margin-left: -8px;
+	margin-right: -8px;
+}
+.modal-btn > .row > div {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.continue-btn {
+    background-color: #fff;
+    border: 1px solid #ff9b44;
+    border-radius: 50px;
+    color: #ff9844;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+}
+.continue-btn:hover,
+.continue-btn:focus,
+.continue-btn:active {
+	background-color: #c70000;
+	border: 1px solid #ff9b44;
+	color: #fff;
+}
+.cancel-btn {
+    background-color: #fff;
+    border: 1px solid #ff9b44;
+    border-radius: 50px;
+    color: #ff9b44;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+}
+.cancel-btn:hover,
+.cancel-btn:focus,
+.cancel-btn:active {
+	background-color: #ff9b44;
+	border: 1px solid #ff9b44;
+	color: #fff;
+}
 /*-----------------
 	18. Edit Profile
 -----------------------*/
@@ -7530,6 +7592,102 @@ ul.comment-list li ul.children {
 .mb-30 {
 	margin-bottom: 30px !important;
 }
+
+/*-----------------
+	64. register
+-----------------------*/
+
+.account-page {
+	align-items: center ;
+	display: flex;
+}
+.account-page .main-wrapper {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.account-content {
+	padding: 20px 0;
+}
+.account-title {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.account-subtitle {
+    color: #4c4c4c;
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.account-boxRegister {
+	background-color: #fff;
+    border: 1px solid #ededed;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    overflow: hidden;
+    width: 80%;
+}
+.account-wrapper {
+	padding: 30px;
+}
+.account-logo {
+	margin-bottom: 30px;
+	text-align: center;
+}
+.account-boxRegister .form-group {
+	margin-bottom: 25px;
+}
+.account-boxRegister .account-btn {
+	background: #ff9b44;
+	background: -moz-linear-gradient(left, #ff9b44 0%, #fc6075 100%);
+	background: -webkit-linear-gradient(left, #ff9b44 0%, #fc6075 100%);
+	background: -ms-linear-gradient(left, #ff9b44 0%, #fc6075 100%);
+	background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
+	border: 0;
+    border-radius: 4px;
+    display: block;
+    font-size: 22px;
+    padding: 10px 26px;
+    width: 100%;
+}
+.account-boxRegister .account-btn:hover,
+.account-boxRegister .account-btn:focus {
+	border: 0;
+	opacity: 0.8;
+}
+.account-boxRegister .form-control {
+    background-color: #fbfbfb;
+    /* border: 1px solid #e3e3e3; */
+    border-radius: 4px;
+    height: 46px;
+}
+.account-boxRegister label {
+	color: #1f1f1f;
+	font-size: 16px;
+	font-weight: normal;
+    margin-bottom: 5px;
+}
+.account-logo img {
+	width: 100px;
+}
+.account-footer {
+    text-align: center;
+}
+.account-footer p {
+    margin-bottom: 0;
+}
+.account-footer a {
+	color: #ff9b44;
+}
+.account-footer a:hover {
+	color: #ff9b44;
+}
+
 
 /*-----------------
 	64. Responsive
